@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { UserClass, UserFunction, UserChildren } from './user'
 
 function App() {
   const [users, setUsers] = useState([
@@ -10,22 +9,28 @@ function App() {
 
   const [tekst] = useState("Unknown");
 
-  const uvecajGodine = () => {
-    const newUsers = users.map(user => {
-      return { ...user, years: user.years + 5 }
-    });
+  const uvecajGodine = (index) => {
+    const newUsers = [...users];
+    newUsers[index].years += 1;
     setUsers(newUsers);
-  }
+  };
 
   return (
     <>
-      <h1>State</h1>
-      <UserClass name={users[0].name} years={users[0].years} />
-      <UserFunction name={users[1].name} years={users[1].years} />
-      <UserChildren name={users[2].name} years={users[2].years}>
-        {tekst}
-      </UserChildren>
-      <button onClick={uvecajGodine}>Uvećaj godine</button>
+      <h1>useState hook</h1>
+      <div>
+      {users.map((user, index) => (
+        <div key={index}>
+          <p>
+            {user.name} has {user.years} years.
+          </p>
+          <button onClick={() => uvecajGodine(index)}>
+            {tekst}
+            {user.name}
+          </button>
+        </div>
+      ))}
+    </div>
     </>
   )
 }
