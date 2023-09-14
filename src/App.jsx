@@ -21,13 +21,8 @@ function App() {
       <div>
       {users.map((user, index) => (
         <div key={index}>
-          <p>
-            {user.name} has {user.years} years.
-          </p>
-          <button onClick={() => uvecajGodine(index)}>
-            {tekst}
-            {user.name}
-          </button>
+          <p> {user.name} has {user.years} years.</p>
+          <button onClick={() => uvecajGodine(index)}> {tekst} {user.name}</button>
         </div>
       ))}
     </div>
