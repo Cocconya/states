@@ -18,13 +18,13 @@ class App extends Component {
         { name: 'Marko', years: 35 },
         { name: 'Ana', years: 25 },
        ],
-       tekst: "Ćiribu Ćiriba"
+       tekst: "Unkown"
     }
   }
 
   uvecajGodine = () => {
     const newUsers = this.state.users.map(user => {
-      return {...user, years: user.years + 30}
+      return {...user, years: user.years + 5}
     })
     this.setState({users: newUsers})
   }
@@ -38,7 +38,7 @@ class App extends Component {
         <UserChildren name={users[2].name} years={users[2].years}>
           {tekst}
         </UserChildren>
-        <button onClick={this.uvecajGodine}>Postaraj ekipu</button>
+        <button onClick={this.uvecajGodine}>Uvećaj godine</button>
       </>
     )
   }
